@@ -66,7 +66,7 @@ export default class NewPostScreen extends React.Component<Props> {
         <View>
           <Text>Choose an issue type:</Text>
           <Picker style={styles.picker}
-            selectedValue={this.state.issueType}
+            selectedValue={this.props.navigation.getParam("issueType")}
               onValueChange={(itemValue, itemIndex) => this.props.navigation.setParams({issueType: itemValue})}>
             <Picker.Item label="Electrical" value="1" />
             <Picker.Item label="Sevege" value="2" />
@@ -76,7 +76,7 @@ export default class NewPostScreen extends React.Component<Props> {
             <Picker.Item label="Poison" value="6" />
           </Picker>
       </View>
-
+          <Text> uros</Text>
       </SafeAreaView>
     );
   }

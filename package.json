@@ -8,6 +8,8 @@
   "dependencies": {
     "expo": "^30.0.0",
     "firebase": "5.2.0",
+    "graphql": "^14.2.1",
+    "graphql-tag": "^2.10.1",
     "react": "16.4.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-30.0.0.tar.gz",
     "react-navigation": "^3.8.1",

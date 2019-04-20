@@ -24,8 +24,14 @@ export default class MainScreen extends React.Component {
   
   onPressHandler = () => {
       const { navigation } = this.props.navigation;
-      this.props.navigation.navigate('Home')
+      this.props.navigation.navigate('Home', {userLocation: navigation.getParam("userLocation", "I love me city")})
     };
+  //     this.props.navigation.navigate('DashboardScreen', {
+  //     userAddress: this.state.userAddress,
+  //     userLocation: this.state.userLocation,
+  //     userCity: this.state.userAddress.city
+  //   })
+  // };
     render() {
       
       const { navigation } = this.props;

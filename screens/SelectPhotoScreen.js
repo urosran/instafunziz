@@ -1,6 +1,6 @@
 import { Constants, ImagePicker, Permissions } from 'expo';
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Picker, Button} from 'react-native';
 
 import getPermission from '../utils/getPermission';
 
@@ -30,7 +30,17 @@ export default class SelectPhotoScreen extends Component {
       }
     }
   };
-
+  // submitIssue(){
+  //   if(this.state.issueType === null){
+  //     Alert.alert(
+  //       'Missing issue type',
+  //       "Please choose an issue from the list")
+  //   } else{
+  //       this.saveIssue(uuidv1(), this.state.issueType, Date.now())
+  //       console.log(this.state.issueType) 
+  //       console.log(Date.now())     
+  //   }
+  // }
   render() {
     return (
       <View style={styles.container}>
@@ -40,6 +50,7 @@ export default class SelectPhotoScreen extends Component {
         <Text onPress={this._takePhoto} style={styles.text}>
           Take Photo
         </Text>
+        
       </View>
     );
   }
@@ -48,7 +59,7 @@ export default class SelectPhotoScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+    // alignItems: 'center',
     justifyContent: 'center',
   },
   text: {
@@ -57,4 +68,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
+  picker:{
+    color: "black",
+    marginTop:0, 
+    paddingTop:0,
+  },
+  submit:{
+    paddingTop: 40,
+  }
 });

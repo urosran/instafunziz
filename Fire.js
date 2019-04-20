@@ -71,7 +71,7 @@ class Fire {
     return uploadPhoto(uri, path);
   };
 
-  post = async ({ text, image: localUri }) => {
+  post = async ({ text, image: localUri, issueType, coords }) => {
     try {
       const { uri: reducedImage, width, height } = await shrinkImageAsync(
         localUri,
@@ -86,6 +86,8 @@ class Fire {
         imageHeight: height,
         image: remoteUri,
         user: getUserInfo(),
+        issueType: issueType, 
+        coords: coords
       });
     } catch ({ message }) {
       alert(message);

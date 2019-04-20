@@ -31,10 +31,6 @@ export default class LoginScreen extends React.Component {
     }
 
     let location = await Location.getCurrentPositionAsync({});
-    // console.log(location)
-    let eliotHouse = (await Location.geocodeAsync('101 Dunster St.'))[0];
-    let theCrimson = (await Location.geocodeAsync('14 Plympton St.'))[0];
-    let theKitty = (await Location.geocodeAsync('2 Holyoke Place'))[0];
     
     let where = (await Location.reverseGeocodeAsync(location.coords))[0];
     // console.log(where);

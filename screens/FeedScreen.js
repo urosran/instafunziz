@@ -82,7 +82,7 @@ export default class FeedScreen extends Component {
     // Let's make everything purrty by calling this method which animates layout changes.
     LayoutAnimation.easeInEaseOut();
     return (
-      <List style={{marginTop: Constants.statusBarHeight , }}
+      <List style={{marginTop: Constants.statusBarHeight}}
         refreshControl={
           <RefreshControl
             refreshing={this.state.loading}

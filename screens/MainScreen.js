@@ -9,6 +9,7 @@ import { ScrollView,
 import { MapView } from 'expo';
 // import LocationView from './Location'
 import { Constants } from 'expo';
+import Consumer from "../utils/Context"
 
 export default class MainScreen extends React.Component {
   state = {
@@ -34,31 +35,30 @@ export default class MainScreen extends React.Component {
   // };
     render() {
       
-      const { navigation } = this.props;
-      const userAddress = navigation.getParam("userAddress", "I love me city")
-      const userLocation = navigation.getParam("userLocation", "I love me city")
-
-    
     return (
     <View style={styles.container}>
-      <MapView
-      style={styles.map}
-      initialRegion={{
-          latitude: userLocation.coords.latitude,
-          longitude: userLocation.coords.longitude,
-          latitudeDelta: 1 / 100,
-          longitudeDelta: 1 / 100,
-        }}
-        >
-      <MapView.Marker
-          coordinate={userLocation.coords}
-          title="You are here"
-          description={userAddress.street}
-          pinColor="#569752"
-          flat={false}
-          opacity={1}
-        />
-      </MapView>
+      <Consumer>
+        {(context)=>(
+            <MapView
+            style={styles.map}
+            initialRegion={{
+              latitude: context.state.userLocation.coords.latitude,
+              longitude: context.state.userLocation.coords.longitude,
+              latitudeDelta: 1 / 100,
+              longitudeDelta: 1 / 100,
+            }}
+            >
+          <MapView.Marker
+              coordinate={context.state.userLocation.coords}
+              title="You are here"
+              description={context.state.userAddress.street}
+              pinColor="#569752"
+              flat={false}
+              opacity={1}
+              />
+        </MapView>
+        )}
+      </Consumer>
       <Text style={styles.text}>Recently reported issues:</Text>
     </View>
     );

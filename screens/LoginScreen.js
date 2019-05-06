@@ -1,8 +1,9 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Text, Button } from 'react-native';
+import { ScrollView, StyleSheet, Text, Button, View } from 'react-native';
 // import {Google} from 'expo';
 // import SplashScreen from './SplashScreen'
 import { Constants, Location, Permissions, Font } from 'expo';
+import Consumer from "../utils/Context" 
 
 export default class LoginScreen extends React.Component {
   static navigationOptions = {
@@ -19,10 +20,6 @@ export default class LoginScreen extends React.Component {
     isLoading: false
   };
   
-  // static navigationOptions = {
-  //   title: ({ state }) => `Total K:${state.params && state.params.userAddress.city ? state.params.userAddress.city : ''}`
-  // };
-
   _getLocationAsync = async () => {
     let { status } = await Permissions.askAsync(Permissions.LOCATION);
     if (status !== 'granted') {
@@ -30,14 +27,15 @@ export default class LoginScreen extends React.Component {
       return;
     }
 
-    let location = await Location.getCurrentPositionAsync({});
+    let userLocation = await Location.getCurrentPositionAsync({});
+    console.log(userLocation);
     
-    let where = (await Location.reverseGeocodeAsync(location.coords))[0];
-    // console.log(where);
+    let userAddress = (await Location.reverseGeocodeAsync(userLocation.coords))[0];
+    console.log(userAddress);
 
     this.setState({
-      userLocation: location,
-      userAddress: where,
+      userLocation: userLocation,
+      userAddress: userAddress,
     });
   };
 
@@ -57,20 +55,24 @@ export default class LoginScreen extends React.Component {
     //   console.log(user);
     // }
     // const { navigation } = this.props.navigation;
-    this.props.navigation.navigate('DashboardScreen', {
-      userAddress: this.state.userAddress,
-      userLocation: this.state.userLocation,
-      userCity: this.state.userAddress.city
-    })
+    this.props.navigation.navigate('DashboardScreen')
   };
 
   render() {
     return (
-      <ScrollView style={styles.container}>
-        <Button
-        title="Implement Google login"
-        onPress={() => this.onPressHandler()}/>
-      </ScrollView>
+      <Consumer>
+        { ({state, updateAddress, updateLocation}) => { 
+          return(
+            <ScrollView style={styles.container}>
+              <Button
+              title="Implement Google login"
+              onPress={() => {this.onPressHandler(); 
+                updateAddress(this.state.userAddress);
+                updateLocation(this.state.userLocation)}}/>
+              </ScrollView>
+          )}
+        }
+      </Consumer>
     );
   }
 }

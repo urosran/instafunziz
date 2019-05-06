@@ -13,11 +13,22 @@ import {Ionicons} from '@expo/vector-icons'
 import LoginScreen from "./screens/LoginScreen";
 import MainScreen from "./screens/MainScreen";
 import FeedScreen from "./screens/FeedScreen"
+import {Container} from "./utils/Context"
+
 
 export default class App extends React.Component {
-  render() {
-    return <AppNavigator/> ;
+  constructor(props){
+    super(props)
+    this.state={
+      coords:"uros"
+    }
   }
+  render() {
+    return (
+    <Container>
+      <AppNavigator/>
+    </Container>
+  )}
 }
 
 const HomeStack = createBottomTabNavigator({

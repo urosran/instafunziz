@@ -9,13 +9,13 @@ import Consumer from '../utils/Context'
 
 export default class NewPostScreen extends React.Component<Props> {
   static navigationOptions = ({ navigation }) => ({
-    title: 'Issue details',
+    title: 'Details',
     headerRight: (
       <Consumer>
         {(context) => (
           <HeaderButtons IconComponent={Ionicons} iconSize={23} color="black">
         <HeaderButtons.Item
-          title="Add Issue"
+          title="Add"
           onPress={() => {
             const text = navigation.getParam('text');
             const image = navigation.getParam('image');

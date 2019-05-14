@@ -28,10 +28,10 @@ export default class LoginScreen extends React.Component {
     }
 
     let userLocation = await Location.getCurrentPositionAsync({});
-    console.log(userLocation);
+    // console.log(userLocation);
     
     let userAddress = (await Location.reverseGeocodeAsync(userLocation.coords))[0];
-    console.log(userAddress);
+    // console.log(userAddress);
 
     this.setState({
       userLocation: userLocation,

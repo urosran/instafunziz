@@ -14,7 +14,8 @@ import LoginScreen from "./screens/LoginScreen";
 import MainScreen from "./screens/MainScreen";
 import FeedScreen from "./screens/FeedScreen"
 import {Container} from "./utils/Context"
-
+import {Font} from "expo"
+import Emoji from 'react-native-emoji';
 
 export default class App extends React.Component {
   constructor(props){
@@ -23,6 +24,13 @@ export default class App extends React.Component {
       coords:"uros"
     }
   }
+  componentDidMount() {
+    Font.loadAsync({
+      'questral': require('./assets/fonts/Questrial-Regular.ttf'),
+      'pacifico': require('./assets/fonts/Pacifico-Regular.ttf'),
+    });
+  }
+
   render() {
     return (
     <Container>
@@ -38,7 +46,8 @@ const HomeStack = createBottomTabNavigator({
     screen: SelectPhotoScreen,
     navigationOptions: {
       tabBarIcon: tabBarIcon('add-circle'),
-      tabBarLabel: 'Submit an issue'
+      tabBarLabel: 'Submit an issue',
+      title: "select a photo"
     },
   },
   Feed: {
@@ -94,7 +103,15 @@ const AppSwitchNavigator = createSwitchNavigator({
 AppSwitchNavigator.navigationOptions = ({navigation}) => {
   const header = null;
   return {
-    header,
+    title: "Moj Grad",
+    headerStyle: {
+      backgroundColor: '#258CD5',
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+      fontFamily: 'Futura',
+    },
   };
 };
 

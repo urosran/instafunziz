@@ -8,19 +8,21 @@ import { ScrollView,
 // import MapScreen from './MapScreen.js'
 import { MapView } from 'expo';
 // import LocationView from './Location'
-import { Constants } from 'expo';
-import Consumer from "../utils/Context"
+import { LinearGradient } from 'expo';
+import Consumer, { Container } from "../utils/Context"
+import IosFonts from '../utils/title';
 
 export default class MainScreen extends React.Component {
   state = {
-    // userLocation: navigation.getParam("userLocation", "I love my city"),
+    userLocation: undefined,
+    userAddress: undefined,
   };
   
   static navigationOptions = ({ navigation }) => ({
     title: navigation.getParam('userCity', 'Your City'),
     fontSize: 18,
     backgroundColor: '#258CD6',
-    header: null,
+    header: "Moj Grad",
   })
   
   onPressHandler = () => {
@@ -33,60 +35,79 @@ export default class MainScreen extends React.Component {
   //     userCity: this.state.userAddress.city
   //   })
   // };
+  componentDidMount(){
+    console.log("________")
+    console.log(this.context.userAddress)
+    console.log("________")
+  //   setState({
+  //     userLocation: this.context.userLocation, 
+  //     userAddress: this.context.userAddress}) 
+  // }
+  }
+
     render() {
       
     return (
     <View style={styles.container}>
       <Consumer>
         {(context)=>(
-            <MapView
-            style={styles.map}
-            initialRegion={{
-              latitude: context.state.userLocation.coords.latitude,
-              longitude: context.state.userLocation.coords.longitude,
-              latitudeDelta: 1 / 100,
-              longitudeDelta: 1 / 100,
-            }}
-            >
-          <MapView.Marker
-              coordinate={context.state.userLocation.coords}
-              title="You are here"
-              description={context.state.userAddress.street}
-              pinColor="#569752"
-              flat={false}
-              opacity={1}
-              />
-        </MapView>
+          <LinearGradient start={[0, 0.5]}
+            end={[1, 0.5]}
+            colors={['#EFBB35', '#4AAE9B']}
+            style={{borderRadius: 5, margin: 5, flex:1, padding:1}}>
+              <MapView
+              style={styles.map}
+              initialRegion={{
+                latitude: context.state.userLocation.coords.latitude,
+                longitude: context.state.userLocation.coords.longitude,
+                latitudeDelta: 1 / 100,
+                longitudeDelta: 1 / 100,
+              }}
+              >
+            <MapView.Marker
+                coordinate={context.state.userLocation.coords}
+                title="You are here"
+                description={context.state.userAddress.street}
+                pinColor="#569752"
+                flat={false}
+                opacity={1}
+                />
+            </MapView>
+          </LinearGradient>
         )}
       </Consumer>
-      <Text style={styles.text}>Recently reported issues:</Text>
+      <Text style={styles.text}>Recent reporters:</Text>
+      <IosFonts style={styles.list}/>
     </View>
     );
   }
 }
 
+MainScreen.contextType = Container;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: Constants.statusBarHeight,
+    // paddingTop: Constants.statusBarHeight,
     backgroundColor: '#fff',
     // flexDirection: 'row',
   },
-  btn: {
-    flex: 1, 
-    alignContent: 'center',
-    width: 2
+  list: {
+    padding:10,
+    // flex: 0.8, 
+    // alignContent: 'center',
+    // width: 2
   },
   map: {
     flex: 1, 
-    maxHeight: 300,
+    padding: 10
   },
   text: {
-    flex: 1,
+    // flex: 0.5,
     fontSize: 20,
-    fontFamily: 'pacifico',
-    padding: 10,
+    fontFamily: 'Futura',
+    paddingLeft: 5,
+    paddingBottom: 5,
     justifyContent: 'center',
   }
 });

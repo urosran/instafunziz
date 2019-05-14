@@ -4976,7 +4976,7 @@ no-case@^2.2.0:
   dependencies:
     lower-case "^1.1.1"
 
-node-emoji@^1.4.1:
+node-emoji@1.10.0, node-emoji@^1.4.1:
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/node-emoji/-/node-emoji-1.10.0.tgz#8886abd25d9c7bb61802a658523d1f8d2a89b2da"
   dependencies:
@@ -5897,6 +5897,12 @@ react-lifecycles-compat@^3.0.4:
 react-native-branch@2.2.5:
   version "2.2.5"
   resolved "https://registry.yarnpkg.com/react-native-branch/-/react-native-branch-2.2.5.tgz#4074dd63b4973e6397d9ce50e97b57c77a518e9d"
+
+react-native-emoji@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/react-native-emoji/-/react-native-emoji-1.6.0.tgz#edbee35a51a1506182876adf62fd71ce18913d39"
+  dependencies:
+    node-emoji "1.10.0"
 
 react-native-gesture-handler@1.0.6:
   version "1.0.6"

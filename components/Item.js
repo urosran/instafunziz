@@ -3,7 +3,7 @@ import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 
 const profileImageSize = 36;
-const padding = 12;
+const padding = 0;
 
 export default class Item extends React.Component {
   state = {};
@@ -45,8 +45,8 @@ export default class Item extends React.Component {
 
 const Metadata = ({ name, description }) => (
   <View style={styles.padding}>
-    <IconBar />
-    <Text style={styles.text}>{name}</Text>
+    {/* <IconBar /> */}
+    {/* <Text style={styles.text}>{name}</Text> */}
     <Text style={styles.subtitle}>{description}</Text>
   </View>
 );
@@ -54,10 +54,10 @@ const Metadata = ({ name, description }) => (
 const Header = ({ name, image }) => (
   <View style={[styles.row, styles.padding]}>
     <View style={styles.row}>
-      <Image style={styles.avatar} source={image} />
+      {/* <Image style={styles.avatar} source={image} /> */}
       <Text style={styles.text}>{name}</Text>
     </View>
-    <Icon name="ios-more" />
+    {/* <Icon name="ios-more" /> */}
   </View>
 );
 

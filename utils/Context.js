@@ -10,15 +10,15 @@ export class Container extends React.Component {
    
   setLocation = userLocationUpdate => {
     this.setState({ userLocation: userLocationUpdate }, () => {
-      console.log(this.state.userAddress, 'user address');
+      // console.log(this.state.userAddress, 'user address');
     })};
   
   setAddress = userAddressUpdate => {
-    console.log("passed IN:")
-    console.log(userAddressUpdate)
+    // console.log("passed IN:")
+    // console.log(userAddressUpdate)
     // this.setState({userAddress: userAddressUpdate})
     this.setState({ userAddress: userAddressUpdate }, () => {
-    console.log(this.state.userAddress, 'user address');
+    // console.log(this.state.userAddress, 'user address');
     })}; 
     
   

@@ -57,6 +57,7 @@ export default class SelectPhotoScreen extends Component {
     );
     return (
       <View style={styles.container}>
+      <Text>Please add a photo, it helps services to better address your request:</Text>
         <TouchableOpacity onPress={this._takePhoto}>
           <LinearGradient start={[0, 0.5]}
                           end={[1, 0.5]}

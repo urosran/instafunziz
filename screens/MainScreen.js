@@ -4,15 +4,10 @@ import { ScrollView,
   Text, 
   View, 
   Button } from 'react-native';
-// import { ExpoLinksView } from '@expo/samples';
-// import MapScreen from './MapScreen.js'
 import { MapView } from 'expo';
-// import LocationView from './Location'
-import { LinearGradient } from 'expo';
 import Consumer, { Container } from "../utils/Context"
 import TopBar from "../utils/TopBar"
 import IssuesFilter from '../utils/IssuesFilter';
-// import IosFonts from '../utils/title';
 
 export default class MainScreen extends React.Component {
   state = {
@@ -28,8 +23,6 @@ export default class MainScreen extends React.Component {
     render() {
       
       return (
-        // <View>
-          // <View style={styles.container}>
             <Consumer>
               {(context)=>(
                 <View>
@@ -56,7 +49,6 @@ export default class MainScreen extends React.Component {
                       />
                   </MapView>
                 </View> 
-                // </LinearGradient>
               )}
             </Consumer>
       );
@@ -68,15 +60,10 @@ MainScreen.contextType = Container;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // paddingTop: Constants.statusBarHeight,
     backgroundColor: '#fff',
-    // flexDirection: 'row',
   },
   list: {
     padding:10,
-    // flex: 0.8, 
-    // alignContent: 'center',
-    // width: 2
   },
   map: {
     minHeight: 500,
@@ -87,11 +74,8 @@ const styles = StyleSheet.create({
     shadowOffset:{  width: 5,  height: 5,  },
     shadowColor: 'black',
     shadowOpacity: 1.0,
-    // borderRadius: 20
-    // width:100
   },
   text: {
-    // flex: 0.5,
     fontSize: 20,
     fontFamily: 'pacifico',
     paddingLeft: 5,
@@ -102,7 +86,6 @@ const styles = StyleSheet.create({
      shadowColor: '#000',        
      backgroundColor: 'white',
      shadowColor: 'red',
-     // alignItems: 'center',
      shadowOffset: {width: 1, height: 1 },
      shadowOpacity: 0.5,
      borderRadius: 20,

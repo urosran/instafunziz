@@ -79,17 +79,18 @@ const HomeStack = createBottomTabNavigator({
   AppSwitchNavigator.navigationOptions = ({navigation}) => {
     const header = null;
     return {
-      title: "Moj Grad",
-      headerStyle: {
-        backgroundColor: '#258CD5',
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-        fontFamily: 'Futura',
-      },
-    };
-  };
+    // //   title: "Moj Grad",
+    //   headerStyle: {
+    //     backgroundColor: '#258CD5',
+    //   },
+    //   headerTintColor: '#fff',
+    //   headerTitleStyle: {
+    //     fontWeight: 'bold',
+    //     fontFamily: 'pacifico',
+    //   },
+    // };
+        header
+    }};
   
   const AppNavigator = createAppContainer(createStackNavigator({
     SignIn: AppSwitchNavigator,

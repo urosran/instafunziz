@@ -11,6 +11,7 @@ import { MapView } from 'expo';
 import { LinearGradient } from 'expo';
 import Consumer, { Container } from "../utils/Context"
 import TopBar from "../utils/TopBar"
+import IssuesFilter from '../utils/IssuesFilter';
 // import IosFonts from '../utils/title';
 
 export default class MainScreen extends React.Component {
@@ -28,16 +29,14 @@ export default class MainScreen extends React.Component {
       
       return (
         // <View>
-          <View style={styles.container}>
+          // <View style={styles.container}>
             <Consumer>
               {(context)=>(
-                // <LinearGradient start={[0, 0.5]}
-                // end={[1, 0.5]}
-                // colors={['#EFBB35', '#4AAE9B']}
-                // style={{borderRadius: 5, margin: 0, flex:1, padding:0}}>
                 <View>
-                <TopBar city={context.state.userAddress.city}/> 
-
+                  <View style={styles.top}>
+                  <TopBar city={context.state.userAddress.city}/>
+                  <IssuesFilter style={styles.isssues}/> 
+                </View>
                     <MapView
                     style={styles.map}
                     initialRegion={{
@@ -60,9 +59,6 @@ export default class MainScreen extends React.Component {
                 // </LinearGradient>
               )}
             </Consumer>
-            <Text style={styles.text}>Recent reporters:</Text>
-          </View> 
-      // </View>
       );
   }
 }
@@ -83,9 +79,15 @@ const styles = StyleSheet.create({
     // width: 2
   },
   map: {
+    minHeight: 500,
     flex: 1, 
     padding: 150,
-    marginTop:20
+    marginTop:-15,
+    zIndex:1,
+    shadowOffset:{  width: 5,  height: 5,  },
+    shadowColor: 'black',
+    shadowOpacity: 1.0,
+    // borderRadius: 20
     // width:100
   },
   text: {
@@ -95,5 +97,29 @@ const styles = StyleSheet.create({
     paddingLeft: 5,
     paddingBottom: 5,
     justifyContent: 'center',
-  }
+  },
+  isssues: {
+     shadowColor: '#000',        
+     backgroundColor: 'white',
+     shadowColor: 'red',
+     // alignItems: 'center',
+     shadowOffset: {width: 1, height: 1 },
+     shadowOpacity: 0.5,
+     borderRadius: 20,
+     zIndex:2
+  }, 
+  top: {
+    zIndex:10,
+    backgroundColor:"white",
+    borderRadius:30,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 8,
+    },
+    shadowOpacity: 0.44,
+    shadowRadius: 10.32,
+
+    elevation: 16,
+    }
 });

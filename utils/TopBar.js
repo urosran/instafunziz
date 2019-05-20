@@ -5,7 +5,6 @@ import { ScrollView,
   View, 
   Button, 
   Image } from 'react-native';
-  import Consumer, { Container } from "../utils/Context"
 
 export default class TopBar extends React.Component {
     render() {
@@ -26,6 +25,7 @@ const styles = StyleSheet.create({
         height: 40,
         // borderWidth: 1,
         marginTop: 40,
+        borderRadius: 30,
     }, 
     image: {
         position: "absolute",

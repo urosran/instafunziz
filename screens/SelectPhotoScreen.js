@@ -1,6 +1,6 @@
 import { Constants, ImagePicker, Permissions, LinearGradient } from 'expo';
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Picker, Button, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, Picker, Button, TouchableOpacity, Image} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 import getPermission from '../utils/getPermission';
@@ -57,29 +57,31 @@ export default class SelectPhotoScreen extends Component {
     );
     return (
       <View style={styles.container}>
-      <Text>Please add a photo, it helps services to better address your request:</Text>
-        <TouchableOpacity onPress={this._takePhoto}>
-          <LinearGradient start={[0, 0.5]}
-                          end={[1, 0.5]}
-                          colors={['#EFBB35', '#4AAE9B']}
-                          style={{borderRadius: 5, margin: 10}}>
-            <View style={styles.circleGradient}>
-             <Icon name="ios-camera" style={styles.visit}/>
-             <Text>Take a photo</Text>
-            </View>
-          </LinearGradient>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={this._selectPhoto}>
-          <LinearGradient start={[0, 0.5]}
-                          end={[1, 0.5]}
-                          colors={['#EFBB35', '#4AAE9B']}
-                          style={{borderRadius: 5, margin: 10}}>
-            <View style={styles.circleGradient}>
-              <Icon name="ios-add-circle"/>
-              <Text>Upload a photo</Text>
-            </View>
-          </LinearGradient>
-        </TouchableOpacity>
+        <Text style={styles.text}>Add a photo</Text>
+        <Image style={styles.image} source={require('../assets/icons/fix.png')} />
+
+          <TouchableOpacity onPress={this._takePhoto}>
+            <LinearGradient start={[0, 0.5]}
+                            end={[1, 0.5]}
+                            colors={['#EFBB35', '#4AAE9B']}
+                            style={{borderRadius: 5, margin: 10}}>
+              <View style={styles.circleGradient}>
+              <Icon name="ios-camera" style={styles.visit}/>
+              <Text>Take a photo</Text>
+              </View>
+            </LinearGradient>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this._selectPhoto}>
+            <LinearGradient start={[0, 0.5]}
+                            end={[1, 0.5]}
+                            colors={['#EFBB35', '#4AAE9B']}
+                            style={{borderRadius: 5, margin: 10}}>
+              <View style={styles.circleGradient}>
+                <Icon name="ios-add-circle"/>
+                <Text>Upload a photo</Text>
+              </View>
+            </LinearGradient>
+          </TouchableOpacity>
       </View>
     );
   }
@@ -88,14 +90,16 @@ export default class SelectPhotoScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // alignItems: 'center',
     justifyContent: 'center',
   },
   text: {
-    padding: 24,
-    fontSize: 18,
+    marginTop: 20,
+    padding: 10,
+    fontSize: 30,
     fontWeight: 'bold',
-    textAlign: 'center',
+    textAlign: 'left',
+    fontFamily: 'questral',
+    borderRadius: 1,
   },
   picker:{
     color: "black",
@@ -119,5 +123,12 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     color: '#008f68',
     fontSize: 12
+  },
+  image: {
+    marginTop:0, 
+    flex: 1,
+    height: 400, 
+    width: 300,
+    alignSelf: 'center',
   }
 });

@@ -40,9 +40,7 @@ export default class NewPostScreen extends React.Component<Props> {
             coords: null
           };
   
-  componentDidMount() {
-    
-  }
+ 
   // submitIssue(){
   //   const text = navigation.getParam('text');
   //   const image = navigation.getParam('image');

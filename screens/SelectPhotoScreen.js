@@ -49,9 +49,9 @@ export default class SelectPhotoScreen extends Component {
   render() {
     const Icon = ({ name, action }) => (
       <Ionicons 
-        style={{ marginRight: 8 }} 
+        style={{ marginRight: 8, alignSelf: "center"}} 
         name={name} 
-        size={100} 
+        size={50} 
         color="#258CD6"
         onPress={action} />
     );
@@ -60,28 +60,16 @@ export default class SelectPhotoScreen extends Component {
         <Text style={styles.text}>Add a photo</Text>
         <Image style={styles.image} source={require('../assets/icons/fix.png')} />
 
+        <View style={styles.circleGradient}>
           <TouchableOpacity onPress={this._takePhoto}>
-            <LinearGradient start={[0, 0.5]}
-                            end={[1, 0.5]}
-                            colors={['#EFBB35', '#4AAE9B']}
-                            style={{borderRadius: 5, margin: 10}}>
-              <View style={styles.circleGradient}>
-              <Icon name="ios-camera" style={styles.visit}/>
-              <Text>Take a photo</Text>
-              </View>
-            </LinearGradient>
+            <Icon name="ios-camera" style={styles.visit}/>
+            <Text style={styles.text_sub}>Take a photo</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={this._selectPhoto}>
-            <LinearGradient start={[0, 0.5]}
-                            end={[1, 0.5]}
-                            colors={['#EFBB35', '#4AAE9B']}
-                            style={{borderRadius: 5, margin: 10}}>
-              <View style={styles.circleGradient}>
-                <Icon name="ios-add-circle"/>
-                <Text>Upload a photo</Text>
-              </View>
-            </LinearGradient>
+              <Icon name="arrow-round-up"/>
+              <Text style={styles.text_sub}>Upload a photo</Text>
           </TouchableOpacity>
+        </View>
       </View>
     );
   }
@@ -101,20 +89,33 @@ const styles = StyleSheet.create({
     fontFamily: 'questral',
     borderRadius: 1,
   },
+  text_sub: {
+    // marginTop: 20,
+    // padding: 10,
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    fontFamily: 'questral',
+    borderRadius: 1,
+    margin: 5, 
+  },
   picker:{
     color: "black",
     marginTop:0, 
     paddingTop:0,
   },
   submit:{
-    paddingTop: 40,
+    // paddingTop: 40,
   },
   circleGradient: {
+    borderRadius: 1,
+    flexDirection: 'row',
+    alignSelf: "center",
     alignItems: 'center',
-    margin: 1,
+    alignContent: 'space-between',
+    // margin: 1,
     backgroundColor: "white",
-    borderRadius: 5,
-    padding: 10
+    // borderRadius: 5,
   },
   visit: {
     margin: 4,
@@ -127,8 +128,8 @@ const styles = StyleSheet.create({
   image: {
     marginTop:0, 
     flex: 1,
-    height: 400, 
-    width: 300,
+    // height: 400, 
+    width: 400,
     alignSelf: 'center',
   }
 });

@@ -9,13 +9,12 @@ import { ScrollView,
 export default class TopBar extends React.Component {
     render() {
         return (
-            
-                <View style={styles.container}>
-                    <Image style={styles.image} source={require('../assets/icons/placeholder.png')} />
-                    <Text style={styles.text}>
-                        {this.props.city}
-                    </Text>
-                </View>
+            <View style={styles.container}>
+                <Image style={styles.image} source={this.props.imageUrl} />
+                <Text style={styles.text}>
+                    {this.props.text}
+                </Text>
+            </View>
         )
     }
 };
@@ -37,6 +36,6 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 30,
         fontFamily: 'questral',
-        paddingLeft: 40,
+        paddingLeft: 50,
     }
 })

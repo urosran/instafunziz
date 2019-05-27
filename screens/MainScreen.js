@@ -27,7 +27,7 @@ export default class MainScreen extends React.Component {
               {(context)=>(
                 <View>
                   <View style={styles.top}>
-                  <TopBar city={context.state.userAddress.city}/>
+                  <TopBar text={context.state.userAddress.city} imageUrl={require("../assets/icons/placeholder.png")}/>
                   <IssuesFilter style={styles.isssues}/> 
                 </View>
                     <MapView
@@ -91,6 +91,7 @@ const styles = StyleSheet.create({
      borderRadius: 20,
      zIndex:2
   }, 
+  
   top: {
     zIndex:10,
     backgroundColor:"white",
@@ -102,7 +103,8 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.44,
     shadowRadius: 10.32,
-
+    minHeight:190,
     elevation: 16,
+    maxHeight:190,
     }
 });

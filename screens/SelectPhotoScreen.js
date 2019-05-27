@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, Picker, Button, TouchableOpacity, Image} from '
 import { Ionicons } from '@expo/vector-icons';
 
 import getPermission from '../utils/getPermission';
+import TopBar from '../utils/TopBar';
 
 const options = {
   allowsEditing: true,
@@ -47,28 +48,25 @@ export default class SelectPhotoScreen extends Component {
   // }
   
   render() {
-    const Icon = ({ name, action }) => (
-      <Ionicons 
-        style={{ marginRight: 8, alignSelf: "center"}} 
-        name={name} 
-        size={50} 
-        color="#258CD6"
-        onPress={action} />
-    );
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>Add a photo</Text>
-        <Image style={styles.image} source={require('../assets/icons/fix.png')} />
+        <View style={styles.top}>
+          <TopBar text={"Add a photo"} imageUrl={require('../assets/icons/camera.png')}/>
 
-        <View style={styles.circleGradient}>
-          <TouchableOpacity onPress={this._takePhoto}>
-            <Icon name="ios-camera" style={styles.visit}/>
-            <Text style={styles.text_sub}>Take a photo</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this._selectPhoto}>
-              <Icon name="arrow-round-up"/>
-              <Text style={styles.text_sub}>Upload a photo</Text>
-          </TouchableOpacity>
+          <View style={styles.topBtns}>
+            <TouchableOpacity onPress={this._takePhoto}>
+              <Image source={require('../assets/icons/take_photo.png')} style={styles.visit}/>
+              <Text style={styles.text_sub}>Take a photo</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={this._selectPhoto}>
+              <Image source={require('../assets/icons/upload.png')} style={styles.visit}/>
+                <Text style={styles.text_sub}>Upload a photo</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+        <View style={styles.image}>
+            <Image  source={require('../assets/icons/add_photo.jpg')} />
         </View>
       </View>
     );
@@ -80,18 +78,28 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
   },
+  top: {
+    zIndex:10,
+    backgroundColor:"white",
+    borderRadius:30,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 8,
+    },
+    shadowOpacity: 0.44,
+    shadowRadius: 10.32,
+    minHeight:190,
+    maxHeight:190,
+    elevation: 16,
+  },
   text: {
-    marginTop: 20,
-    padding: 10,
     fontSize: 30,
-    fontWeight: 'bold',
-    textAlign: 'left',
     fontFamily: 'questral',
-    borderRadius: 1,
+    paddingLeft: 40,
+    marginBottom: 20,
   },
   text_sub: {
-    // marginTop: 20,
-    // padding: 10,
     fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
@@ -99,37 +107,37 @@ const styles = StyleSheet.create({
     borderRadius: 1,
     margin: 5, 
   },
-  picker:{
-    color: "black",
-    marginTop:0, 
-    paddingTop:0,
-  },
-  submit:{
-    // paddingTop: 40,
-  },
-  circleGradient: {
-    borderRadius: 1,
+  topBtns: {
     flexDirection: 'row',
-    alignSelf: "center",
-    alignItems: 'center',
-    alignContent: 'space-between',
-    // margin: 1,
-    backgroundColor: "white",
-    // borderRadius: 5,
+        height: 100,
+        marginTop: 10,
+        borderBottomLeftRadius: 30,
+        borderBottomRightRadius: 30,
+        alignContent: 'space-between',
+        shadowColor: "#000",
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 8,
+        },
+        shadowOpacity: 0.2,
+        shadowRadius: 4.65,
+        alignSelf: 'center',
+        elevation: 7,
+        borderRadius: 20
   },
   visit: {
-    margin: 4,
-    paddingHorizontal: 6,
-    textAlign: "center",
-    backgroundColor: "white",
-    color: '#008f68',
-    fontSize: 12
+    height: 50, 
+    width: 50,
+    margin: 10,
+    borderRadius: 20,
+    alignSelf: "center",
   },
+
   image: {
-    marginTop:0, 
     flex: 1,
-    // height: 400, 
-    width: 400,
     alignSelf: 'center',
+    marginTop: -20,
+    borderRadius: 20
   }
 });

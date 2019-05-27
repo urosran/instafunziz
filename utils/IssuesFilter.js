@@ -11,35 +11,35 @@ export default class IssuesFilter extends React.Component {
     render() {
         return (
             <ScrollView style={styles.container} horizontal={true} showsHorizontalScrollIndicator={false}>
-                <TouchableOpacity onPress={this._takePhoto}>
+                <TouchableOpacity onPress={console.log("pressed1")}>
                     <Image style={styles.image} source={require('../assets/icons/light.png')} />
                     <Text style={styles.text_sub}>Electrical</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={this._takePhoto}>
+                <TouchableOpacity onPress={console.log("pressed")}>
                     <Image style={styles.image} source={require('../assets/icons/road.png')} />
                     <Text style={styles.text_sub}>Roads</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={this._takePhoto}>
+                <TouchableOpacity onPress={console.log("pressed")}>
                     <Image style={styles.image} source={require('../assets/icons/tree.png')} />
                     <Text style={styles.text_sub}>Greens</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={this._takePhoto}>
+                <TouchableOpacity onPress={console.log("pressed")}>
                     <Image style={styles.image} source={require('../assets/icons/trash.png')} />
                     <Text style={styles.text_sub}>Trash</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={this._takePhoto}>
+                <TouchableOpacity onPress={console.log("pressed")}>
                     <Image style={styles.image} source={require('../assets/icons/water.png')} />
                     <Text style={styles.text_sub}>Water</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={this._takePhoto}>
+                <TouchableOpacity onPress={console.log("pressed")}>
                     <Image style={styles.image} source={require('../assets/icons/kanalizacija.png')} />
                     <Text style={styles.text_sub}>Sewage</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={this._takePhoto}>
+                <TouchableOpacity onPress={console.log("pressed")}>
                     <Image style={styles.image} source={require('../assets/icons/light.png')} />
                     <Text style={styles.text_sub}>filler</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={this._takePhoto}>
+                <TouchableOpacity onPress={console.log("pressed")}>
                     <Image style={styles.image} source={require('../assets/icons/light.png')} />
                     <Text style={styles.text_sub}>filler</Text>
                 </TouchableOpacity>
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
         width: 50,
         margin: 10,
         borderRadius: 20,
-        marginLeft: 20,
+        marginLeft: 15,
         
     },
     text: {
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
         paddingLeft: 40,
     },
     text_sub: {
-        fontSize: 20,
+        fontSize: 15,
         fontWeight: 'bold',
         textAlign: 'center',
         fontFamily: 'questral',

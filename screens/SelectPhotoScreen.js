@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   text_sub: {
-    fontSize: 20,
+    fontSize: 15,
     fontWeight: 'bold',
     textAlign: 'center',
     fontFamily: 'questral',
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
   topBtns: {
     flexDirection: 'row',
         height: 100,
-        marginTop: 10,
+        marginTop: 0,
         borderBottomLeftRadius: 30,
         borderBottomRightRadius: 30,
         alignContent: 'space-between',

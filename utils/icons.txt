@@ -932,3 +932,6 @@ ios-add",
 "md-wifi", 
 "md-wine", 
 "md-woman"]
+
+color:
+#819EB6

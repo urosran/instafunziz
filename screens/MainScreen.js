@@ -3,7 +3,8 @@ import { ScrollView,
   StyleSheet, 
   Text, 
   View, 
-  Button } from 'react-native';
+  Button,
+  LayoutAnimation } from 'react-native';
 import { MapView } from 'expo';
 import Consumer, { Container } from "../utils/Context"
 import TopBar from "../utils/TopBar"
@@ -21,7 +22,7 @@ export default class MainScreen extends React.Component {
     };
 
     render() {
-      
+    LayoutAnimation.easeInEaseOut();      
       return (
             <Consumer>
               {(context)=>(

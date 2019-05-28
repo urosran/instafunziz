@@ -11,35 +11,35 @@ export default class IssuesFilter extends React.Component {
     render() {
         return (
             <ScrollView style={styles.container} horizontal={true} showsHorizontalScrollIndicator={false}>
-                <TouchableOpacity onPress={console.log("pressed1")}>
+                <TouchableOpacity onPress={()=>() => console.log("pressed1")}>
                     <Image style={styles.image} source={require('../assets/icons/light.png')} />
                     <Text style={styles.text_sub}>Electrical</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={console.log("pressed")}>
+                <TouchableOpacity onPress={() => console.log("pressed")}>
                     <Image style={styles.image} source={require('../assets/icons/road.png')} />
                     <Text style={styles.text_sub}>Roads</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={console.log("pressed")}>
+                <TouchableOpacity onPress={() => console.log("pressed")}>
                     <Image style={styles.image} source={require('../assets/icons/tree.png')} />
                     <Text style={styles.text_sub}>Greens</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={console.log("pressed")}>
+                <TouchableOpacity onPress={() => console.log("pressed")}>
                     <Image style={styles.image} source={require('../assets/icons/trash.png')} />
                     <Text style={styles.text_sub}>Trash</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={console.log("pressed")}>
+                <TouchableOpacity onPress={() => console.log("pressed")}>
                     <Image style={styles.image} source={require('../assets/icons/water.png')} />
                     <Text style={styles.text_sub}>Water</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={console.log("pressed")}>
+                <TouchableOpacity onPress={() => console.log("pressed")}>
                     <Image style={styles.image} source={require('../assets/icons/kanalizacija.png')} />
                     <Text style={styles.text_sub}>Sewage</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={console.log("pressed")}>
+                <TouchableOpacity onPress={() => console.log("pressed")}>
                     <Image style={styles.image} source={require('../assets/icons/light.png')} />
                     <Text style={styles.text_sub}>filler</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={console.log("pressed")}>
+                <TouchableOpacity onPress={() => console.log("pressed")}>
                     <Image style={styles.image} source={require('../assets/icons/light.png')} />
                     <Text style={styles.text_sub}>filler</Text>
                 </TouchableOpacity>

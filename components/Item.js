@@ -1,9 +1,11 @@
 import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
+import TopBar from '../utils/TopBar';
+// import console = require('console');
 
 const profileImageSize = 36;
-const padding = 0;
+const padding = 10;
 
 export default class Item extends React.Component {
   state = {};
@@ -28,15 +30,31 @@ export default class Item extends React.Component {
     return (
       <View>
         <Header image={{ uri: image }} name={name} />
-        <Image
-          resizeMode="contain"
-          style={{
-            backgroundColor: '#D8D8D8',
-            width: '100%',
-            aspectRatio: aspect,
-          }}
-          source={{ uri: image }}
-        />
+        <View style={{
+              shadowOffset: {
+                width: 0,
+                height: 12,
+            },
+            shadowOpacity: 0.2,
+            shadowRadius: 4.65,
+        }}>
+          <Image
+            resizeMode="contain"
+            style={{
+              backgroundColor: '#D8D8D8',
+              flex: 1,
+              // width: undefined,
+              aspectRatio: aspect,
+              borderRadius: 20, 
+              marginLeft: 20,
+              marginRight: 20,
+              marginTop: 0,
+              // marginBottom: 15,
+              // padding: 10, 
+            }}
+            source={{ uri: image }}
+            />
+        </View>
         <Metadata name={name} description={text} />
       </View>
     );
@@ -44,8 +62,8 @@ export default class Item extends React.Component {
 }
 
 const Metadata = ({ name, description }) => (
-  <View style={styles.padding}>
-    {/* <IconBar /> */}
+  <View style={styles.metadata}>
+    <IconBar />
     {/* <Text style={styles.text}>{name}</Text> */}
     <Text style={styles.subtitle}>{description}</Text>
   </View>
@@ -54,25 +72,36 @@ const Metadata = ({ name, description }) => (
 const Header = ({ name, image }) => (
   <View style={[styles.row, styles.padding]}>
     <View style={styles.row}>
-      {/* <Image style={styles.avatar} source={image} /> */}
+      <Image style={styles.avatar} source={image} />
       <Text style={styles.text}>{name}</Text>
     </View>
     {/* <Icon name="ios-more" /> */}
   </View>
 );
 
-const Icon = ({ name }) => (
+const Icon = ({ name, onPress }) => (
   <Ionicons style={{ marginRight: 8 }} name={name} size={26} color="black" />
+  
 );
 
+// like = () => {
+//   console.log("I LIKED")
+// }
+const like = () =>{
+  console.log("Uros")
+}
+comment = () => {
+  console.log("I COMMENTED")
+  
+}
 const IconBar = () => (
   <View style={styles.row}>
     <View style={styles.row}>
-      <Icon name="ios-heart-outline" />
-      <Icon name="ios-chatbubbles-outline" />
-      <Icon name="ios-send-outline" />
+      <Icon name="ios-thumbs-up-outline" onPress={() => like()}/>
+      <Icon name="ios-chatbubbles-outline" onPress={() => this.comment()}/>
+      {/* <Icon name="ios-send-outline" /> */}
     </View>
-    <Icon name="ios-bookmark-outline" />
+    {/* <Icon name="ios-bookmark-outline" /> */}
   </View>
 );
 
@@ -85,9 +114,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    marginTop: 10, 
   },
   padding: {
     padding,
+  },
+  metadata: {
+    marginLeft: 20,
   },
   avatar: {
     aspectRatio: 1,
@@ -98,6 +131,7 @@ const styles = StyleSheet.create({
     width: profileImageSize,
     height: profileImageSize,
     resizeMode: 'cover',
-    marginRight: padding,
+    marginRight: 10,
+    marginLeft: 15,
   },
 });

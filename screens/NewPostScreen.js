@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
-import { Image, TextInput, View, Picker, Button, StyleSheet, Text } from 'react-native';
+import { Image, TextInput, View, Picker, Button, StyleSheet, Text, LayoutAnimation } from 'react-native';
 import HeaderButtons from 'react-navigation-header-buttons';
 
 import Fire from '../Fire';
@@ -63,6 +63,7 @@ export default class NewPostScreen extends React.Component<Props> {
   // }
 
   render() {
+    LayoutAnimation.easeInEaseOut();          
     const { image } = this.props.navigation.state.params;
     return (
     

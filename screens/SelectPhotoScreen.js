@@ -1,6 +1,6 @@
 import { Constants, ImagePicker, Permissions, LinearGradient } from 'expo';
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Picker, Button, TouchableOpacity, Image} from 'react-native';
+import { StyleSheet, Text, View, Picker, Button, TouchableOpacity, Image, LayoutAnimation} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 import getPermission from '../utils/getPermission';
@@ -48,6 +48,8 @@ export default class SelectPhotoScreen extends Component {
   // }
   
   render() {
+    LayoutAnimation.easeInEaseOut();      
+
     return (
       <View style={styles.container}>
         <View style={styles.top}>
@@ -109,22 +111,22 @@ const styles = StyleSheet.create({
   },
   topBtns: {
     flexDirection: 'row',
-        height: 100,
-        marginTop: 0,
-        borderBottomLeftRadius: 30,
-        borderBottomRightRadius: 30,
-        alignContent: 'space-between',
-        shadowColor: "#000",
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 8,
-        },
-        shadowOpacity: 0.2,
-        shadowRadius: 4.65,
-        alignSelf: 'center',
-        elevation: 7,
-        borderRadius: 20
+    height: 100,
+    marginTop: 0,
+    borderBottomLeftRadius: 30,
+    borderBottomRightRadius: 30,
+    alignContent: 'space-between',
+    shadowColor: "#000",
+    shadowColor: "#000",
+    shadowOffset: {
+        width: 0,
+        height: 8,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 4.65,
+    alignSelf: 'center',
+    elevation: 7,
+    borderRadius: 20
   },
   visit: {
     height: 50, 

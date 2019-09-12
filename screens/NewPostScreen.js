@@ -2,30 +2,45 @@ import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
 import { Image, TextInput, View, Picker, Button, StyleSheet, Text, LayoutAnimation } from 'react-native';
 import HeaderButtons from 'react-navigation-header-buttons';
-
+import Db from '../Db'
 import Fire from '../Fire';
 import { SafeAreaView } from 'react-navigation';
 import Consumer from '../utils/Context'
-import TopBar from '../utils/TopBar';
 
 export default class NewPostScreen extends React.Component<Props> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: '', 
+      issueType: 0, 
+      coords: null
+  };}
+  kvidzibo = "uros"
   static navigationOptions = ({ navigation }) => ({
     title: 'Details',
     headerRight: (
       <Consumer>
         {(context) => (
           <HeaderButtons IconComponent={Ionicons} iconSize={23} color="black">
+        {/* add the image to the database */}
         <HeaderButtons.Item
           title="Add"
           onPress={() => {
             const text = navigation.getParam('text');
             const image = navigation.getParam('image');
-            // console.log(context.state.userLocation.coords)
-            // console.log(navigation.getParam("issueType") === undefined ? "1" : navigation.getParam("issueType"))
-            const coords = context.state.userLocation.coords
+            // let coords = context.state.userLocation.coords
             if (text && image) {
               navigation.navigate("Feed");
-              Fire.shared.post({ text: text.trim(), image, issueType: navigation.getParam("issueType") === undefined ? "1" : navigation.getParam("issueType"), coords: coords });
+              // console.log(this.state, "state")
+              console.log(context, "context")
+              Db.uploadIssue(
+                issueType=context.state.issueType, 
+                reporterData="some data", 
+                imgUrl=image, 
+                zip=context.state.userAddress.postalCode, 
+                status="Reported", 
+                coords=context.state.userLocation.coords)
+              // Fire.shared.post({ text: text.trim(), image, issueType: navigation.getParam("issueType") === undefined ? "1" : navigation.getParam("issueType"), coords: coords });
             } else {
               alert('Need valid description');
             }
@@ -37,18 +52,17 @@ export default class NewPostScreen extends React.Component<Props> {
     ),
   });
 
-  state = { text: '', 
-            issueType: 0, 
-            coords: null
-          };
+ 
   
   updateIssueType(itemValue) {
     console.log("item value:" + itemValue)
 
     if (itemValue != undefined){
       this.props.navigation.setParams({issueType: itemValue})
+      this.setState({issueType: itemValue})
     } else{
       this.props.navigation.setParams({issueType: 1})
+      this.setState({issueType: 1})
     }
   }
   // submitIssue(){
@@ -66,7 +80,9 @@ export default class NewPostScreen extends React.Component<Props> {
     LayoutAnimation.easeInEaseOut();          
     const { image } = this.props.navigation.state.params;
     return (
-    
+      
+      <Consumer>
+        {(context) => (
     <SafeAreaView style={styles.container}>
       <View style={{ padding: 10, flexDirection: 'row' }}>
         <Image
@@ -87,7 +103,7 @@ export default class NewPostScreen extends React.Component<Props> {
           <Text style={styles.text_sub}>Choose an issue type:</Text>
           <Picker style={styles.picker}
             selectedValue={this.props.navigation.getParam("issueType")}
-            onValueChange={(itemValue, itemIndex) => this.updateIssueType(itemValue)}>
+            onValueChange={(itemValue, itemIndex) => context.setIssueType(itemValue)}>
             <Picker.Item label="Electrical" value="1" />
             <Picker.Item label="Sevege" value="2" />
             <Picker.Item label="Trees" value="3" />
@@ -98,15 +114,13 @@ export default class NewPostScreen extends React.Component<Props> {
       </View>
 
       <Image style={styles.image} source={require('../assets/icons/city.jpg')}/>
-            <Consumer>
-                {(context) => (
                   <Text style={styles.text}>
                     {/* <Image style={styles.imageInline} source={require("../assets/icons/placeholder.png")}/>   */}
                     {context.state.userAddress.street}, {context.state.userAddress.city} 
                   </Text>
+        </SafeAreaView>
                 )}
-            </Consumer>
-      </SafeAreaView>
+      </Consumer>
     );
   }
 }

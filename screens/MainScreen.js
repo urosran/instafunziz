@@ -12,17 +12,32 @@ import IssuesFilter from '../utils/IssuesFilter';
 
 export default class MainScreen extends React.Component {
   state = {
-    userLocation: undefined,
-    userAddress: undefined,
+    userLocation: coords={latitude: 53.2734, longitude:-7.77832031},
+    userAddress: city="My City",
   };
-  
+  // componentDidMount(){
+  //   let context = this.context
+  //   console.log(context, "context")
+  // }
   onPressHandler = () => {
     const { navigation } = this.props.navigation;
       this.props.navigation.navigate('Home', {userLocation: navigation.getParam("userLocation", "I love me city")})
     };
 
+
+
     render() {
-    LayoutAnimation.easeInEaseOut();      
+    LayoutAnimation.easeInEaseOut();    
+    
+    coordsUndefined = (latitudeWannaBe) => {
+      if (latitudeWannaBe == undefined){
+        return 53
+      }else{
+        return latitudeWannaBe
+      }
+    }
+
+      console.log(this.state.userLocation.latitude)
       return (
             <Consumer>
               {(context)=>(
@@ -33,9 +48,10 @@ export default class MainScreen extends React.Component {
                 </View>
                     <MapView
                     style={styles.map}
+                    
                     initialRegion={{
-                      latitude: context.state.userLocation.coords.latitude,
-                      longitude: context.state.userLocation.coords.longitude,
+                      latitude: coordsUndefined(context.state.userLocation.coords.latitude),
+                      longitude:  coordsUndefined(context.state.userLocation.coords.longitude),
                       latitudeDelta: 1 / 100,
                       longitudeDelta: 1 / 100,
                     }}
@@ -43,7 +59,7 @@ export default class MainScreen extends React.Component {
                   <MapView.Marker
                       coordinate={context.state.userLocation.coords}
                       title="You are here"
-                      description={context.state.userAddress.street}
+                      description={context.state.userAddress.city}
                       pinColor="#569752"
                       flat={false}
                       opacity={1}

@@ -29,7 +29,6 @@ export default class LoginScreen extends React.Component {
 
     let userLocation = await Location.getCurrentPositionAsync({});
     // console.log(userLocation);
-    
     let userAddress = (await Location.reverseGeocodeAsync(userLocation.coords))[0];
     // console.log(userAddress);
 
@@ -48,13 +47,13 @@ export default class LoginScreen extends React.Component {
   }
   onPressHandler = () => {
     // const clientId = '649846420860-nd92louc1phcmh8h68vofonfk8mo7al1.apps.googleusercontent.com';
-    // const { type, accessToken, user } = await Google.logInAsync({ clientId });
+    // const { type, accessToken, user } = await Google.logInAsync({ clientId })
 
     // if (type === 'success') {
-    //   /* `accessToken` is now valid and can be used to get data from the Google API with HTTP requests */
-    //   console.log(user);
+      /* `accessToken` is now valid and can be used to get data from the Google API with HTTP requests */
+      // console.log(user);
     // }
-    // const { navigation } = this.props.navigation;
+    const { navigation } = this.props.navigation;
     this.props.navigation.navigate('DashboardScreen')
   };
 

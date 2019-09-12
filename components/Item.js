@@ -97,8 +97,8 @@ comment = () => {
 const IconBar = () => (
   <View style={styles.row}>
     <View style={styles.row}>
-      <Icon name="ios-thumbs-up-outline" onPress={() => like()}/>
-      <Icon name="ios-chatbubbles-outline" onPress={() => this.comment()}/>
+      <Icon name="ios-thumbs-up" onPress={() => like()}/>
+      <Icon name="ios-thumbs-up" onPress={() => this.comment()}/>
       {/* <Icon name="ios-send-outline" /> */}
     </View>
     {/* <Icon name="ios-bookmark-outline" /> */}

@@ -11,7 +11,7 @@ export default class IssuesFilter extends React.Component {
     render() {
         return (
             <ScrollView style={styles.container} horizontal={true} showsHorizontalScrollIndicator={false}>
-                <TouchableOpacity onPress={()=>() => console.log("pressed1")}>
+                <TouchableOpacity onPress={() => console.log("pressed1")}>
                     <Image style={styles.image} source={require('../assets/icons/light.png')} />
                     <Text style={styles.text_sub}>Electrical</Text>
                 </TouchableOpacity>

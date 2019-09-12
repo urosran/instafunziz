@@ -2,7 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
 import { Image, TextInput, View, Picker, Button, StyleSheet, Text, LayoutAnimation } from 'react-native';
 import HeaderButtons from 'react-navigation-header-buttons';
-import Db from '../Db'
+import {uploadIssue} from '../Db'
 import Fire from '../Fire';
 import { SafeAreaView } from 'react-navigation';
 import Consumer from '../utils/Context'
@@ -33,7 +33,7 @@ export default class NewPostScreen extends React.Component<Props> {
               navigation.navigate("Feed");
               // console.log(this.state, "state")
               console.log(context, "context")
-              Db.uploadIssue(
+              uploadIssue(
                 issueType=context.state.issueType, 
                 reporterData="some data", 
                 imgUrl=image, 

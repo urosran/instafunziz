@@ -1,3 +1,4 @@
+const axios = require("axios")
 export function uploadIssue(issueType, reporterData, imgUrl, zip, status, coords) {
     body = {
         issueType: issueType,
@@ -7,13 +8,21 @@ export function uploadIssue(issueType, reporterData, imgUrl, zip, status, coords
         status: status,
         coords: coords
     }
+    const file = {
+        uri: imgUrl,             // e.g. 'file:///path/to/file/image123.jpg'
+        name: "123.jpg",            // e.g. 'image123.jpg',
+        type: "image/jpg"             // e.g. 'image/jpg'
+    }
+      
     
     const createFormData = (imageUrl, body) => {
         // const data = new FormData();
+        const image = new File([imageUrl],"name.jpeg")
+        console.log(image)
         var form = new FormData();
         form.append("issueType", "12");
         form.append("reporterData", "2");
-        form.append("image", imageUrl);
+        form.append("file", image);
         form.append("coords", "3");
         form.append("status", "4");
         form.append("imgName", "ldaiuwdlakuwlhda");
@@ -26,14 +35,13 @@ export function uploadIssue(issueType, reporterData, imgUrl, zip, status, coords
         return form;
     };
 
-    
-    fetch('https://desolate-lowlands-52819.herokuapp.com/addIssue', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'multipart/form-data',
-              },
-            data: createFormData(imgUrl),
+    // console.log(createFormData(imgUrl))
+    console.log(imgUrl)
+    axios({
+        url:'https://desolate-lowlands-52819.herokuapp.com/addIssue',     
+        method: 'POST',
+      
+        data: createFormData(imgUrl),
         }).then((response) => response.text())
         .then((responseJson) => {
             console.log(responseJson)
